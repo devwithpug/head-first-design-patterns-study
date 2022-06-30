@@ -1,16 +1,13 @@
 package ch1.simuduck.duck
 
-class DecoyDuck : Duck() {
+import ch1.simuduck.behavior.FlyNoWay
+import ch1.simuduck.behavior.MuteQuack
 
+class DecoyDuck : Duck(
+    flyBehavior = FlyNoWay(),
+    quackBehavior = MuteQuack(),
+) {
     override fun display() {
         println("decoy duck")
-    }
-
-    override fun quack() {
-        // DO NOTHING
-    }
-
-    override fun fly() {
-        // DO NOTHING
     }
 }

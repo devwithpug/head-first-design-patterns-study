@@ -1,19 +1,25 @@
 package ch1.simuduck.duck
 
-open class Duck {
-    open fun quack() {
-        println("quack")
-    }
+import ch1.simuduck.behavior.FlyBehavior
+import ch1.simuduck.behavior.QuackBehavior
 
+abstract class Duck(
+    private val flyBehavior: FlyBehavior,
+    private val quackBehavior: QuackBehavior
+) {
     open fun display() {
         println("duck")
     }
 
-    open fun swim() {
+    fun swim() {
         println("swim")
     }
 
-    open fun fly() {
-        println("fly")
+    fun fly() {
+        flyBehavior.fly()
+    }
+
+    fun quack() {
+        quackBehavior.quack()
     }
 }

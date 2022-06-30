@@ -1,16 +1,13 @@
 package ch1.simuduck.duck
 
-class RubberDuck : Duck() {
+import ch1.simuduck.behavior.FlyNoWay
+import ch1.simuduck.behavior.Squeak
 
+class RubberDuck : Duck(
+    flyBehavior = FlyNoWay(),
+    quackBehavior = Squeak(),
+) {
     override fun display() {
         println("rubber duck")
-    }
-
-    override fun quack() {
-        println("beep")
-    }
-
-    override fun fly() {
-        // DO NOTHING
     }
 }
