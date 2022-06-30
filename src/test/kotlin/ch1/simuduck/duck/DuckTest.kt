@@ -1,6 +1,7 @@
 package ch1.simuduck.duck
 
-import org.assertj.core.api.Assertions
+import ch1.simuduck.behavior.FlyRocketPowered
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -17,9 +18,9 @@ internal class DuckTest {
         val quack = mallardDuck.performQuack()
 
         // then
-        Assertions.assertThat(name).isEqualTo("mallard duck")
-        Assertions.assertThat(fly).isEqualTo("fly with wings")
-        Assertions.assertThat(quack).isEqualTo("quack")
+        assertThat(name).isEqualTo("mallard duck")
+        assertThat(fly).isEqualTo("fly with wings")
+        assertThat(quack).isEqualTo("quack")
     }
 
     @Test
@@ -33,9 +34,9 @@ internal class DuckTest {
         val quack = redheadDuck.performQuack()
 
         // then
-        Assertions.assertThat(name).isEqualTo("redhead duck")
-        Assertions.assertThat(fly).isEqualTo("fly with wings")
-        Assertions.assertThat(quack).isEqualTo("quack")
+        assertThat(name).isEqualTo("redhead duck")
+        assertThat(fly).isEqualTo("fly with wings")
+        assertThat(quack).isEqualTo("quack")
     }
 
     @Test
@@ -48,9 +49,9 @@ internal class DuckTest {
         val quack = rubberDuck.performQuack()
 
         // then
-        Assertions.assertThat(name).isEqualTo("rubber duck")
+        assertThat(name).isEqualTo("rubber duck")
         assertThrows<UnsupportedOperationException> { rubberDuck.performFly() }
-        Assertions.assertThat(quack).isEqualTo("squeak")
+        assertThat(quack).isEqualTo("squeak")
     }
 
     @Test
@@ -62,8 +63,21 @@ internal class DuckTest {
         val name = decoyDuck.name
 
         // then
-        Assertions.assertThat(name).isEqualTo("decoy duck")
+        assertThat(name).isEqualTo("decoy duck")
         assertThrows<UnsupportedOperationException> { decoyDuck.performFly() }
         assertThrows<UnsupportedOperationException> { decoyDuck.performQuack() }
+    }
+
+    @Test
+    fun `ModelDuck 테스트`() {
+        // given
+        val modelDuck = ModelDuck()
+
+        // when
+        modelDuck.setFlyBehavior(FlyRocketPowered())
+        val fly = modelDuck.performFly()
+
+        // then
+        assertThat(fly).isEqualTo("to the moon!")
     }
 }
