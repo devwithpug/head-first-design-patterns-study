@@ -13,8 +13,8 @@ internal class DuckTest {
 
         // when
         val name = mallardDuck.name
-        val fly = mallardDuck.fly()
-        val quack = mallardDuck.quack()
+        val fly = mallardDuck.performFly()
+        val quack = mallardDuck.performQuack()
 
         // then
         Assertions.assertThat(name).isEqualTo("mallard duck")
@@ -29,8 +29,8 @@ internal class DuckTest {
 
         // when
         val name = redheadDuck.name
-        val fly = redheadDuck.fly()
-        val quack = redheadDuck.quack()
+        val fly = redheadDuck.performFly()
+        val quack = redheadDuck.performQuack()
 
         // then
         Assertions.assertThat(name).isEqualTo("redhead duck")
@@ -45,11 +45,11 @@ internal class DuckTest {
 
         // when
         val name = rubberDuck.name
-        val quack = rubberDuck.quack()
+        val quack = rubberDuck.performQuack()
 
         // then
         Assertions.assertThat(name).isEqualTo("rubber duck")
-        assertThrows<UnsupportedOperationException> { rubberDuck.fly() }
+        assertThrows<UnsupportedOperationException> { rubberDuck.performFly() }
         Assertions.assertThat(quack).isEqualTo("squeak")
     }
 
@@ -63,7 +63,7 @@ internal class DuckTest {
 
         // then
         Assertions.assertThat(name).isEqualTo("decoy duck")
-        assertThrows<UnsupportedOperationException> { decoyDuck.fly() }
-        assertThrows<UnsupportedOperationException> { decoyDuck.quack() }
+        assertThrows<UnsupportedOperationException> { decoyDuck.performFly() }
+        assertThrows<UnsupportedOperationException> { decoyDuck.performQuack() }
     }
 }

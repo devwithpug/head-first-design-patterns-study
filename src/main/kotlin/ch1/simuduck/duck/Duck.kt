@@ -10,7 +10,7 @@ abstract class Duck(
     open val name
         get() = "duck"
 
-    fun fly() = flyBehavior.fly()
+    fun performFly() = flyBehavior.fly()
 
-    fun quack() = quackBehavior.quack()
+    fun performQuack() = quackBehavior.quack()
 }
