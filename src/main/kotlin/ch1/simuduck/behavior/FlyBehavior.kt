@@ -1,5 +1,5 @@
 package ch1.simuduck.behavior
 
 interface FlyBehavior {
-    fun fly()
+    fun fly(): String
 }

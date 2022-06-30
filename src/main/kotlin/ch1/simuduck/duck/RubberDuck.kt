@@ -7,7 +7,6 @@ class RubberDuck : Duck(
     flyBehavior = FlyNoWay(),
     quackBehavior = Squeak(),
 ) {
-    override fun display() {
-        println("rubber duck")
-    }
+    override val name
+        get() = "rubber duck"
 }

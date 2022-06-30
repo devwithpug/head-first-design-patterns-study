@@ -7,7 +7,6 @@ class RedheadDuck : Duck(
     flyBehavior = FlyWithWings(),
     quackBehavior = Quack(),
 ) {
-    override fun display() {
-        println("redhead duck")
-    }
+    override val name
+        get() = "redhead duck"
 }

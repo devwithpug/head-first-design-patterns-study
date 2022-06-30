@@ -7,7 +7,6 @@ class DecoyDuck : Duck(
     flyBehavior = FlyNoWay(),
     quackBehavior = MuteQuack(),
 ) {
-    override fun display() {
-        println("decoy duck")
-    }
+    override val name
+        get() = "decoy duck"
 }

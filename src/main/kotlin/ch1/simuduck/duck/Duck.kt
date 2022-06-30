@@ -7,19 +7,10 @@ abstract class Duck(
     private val flyBehavior: FlyBehavior,
     private val quackBehavior: QuackBehavior
 ) {
-    open fun display() {
-        println("duck")
-    }
+    open val name
+        get() = "duck"
 
-    fun swim() {
-        println("swim")
-    }
+    fun fly() = flyBehavior.fly()
 
-    fun fly() {
-        flyBehavior.fly()
-    }
-
-    fun quack() {
-        quackBehavior.quack()
-    }
+    fun quack() = quackBehavior.quack()
 }
