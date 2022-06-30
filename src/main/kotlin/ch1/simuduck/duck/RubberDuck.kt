@@ -1,13 +1,13 @@
-package ch1.simuduck
+package ch1.simuduck.duck
 
-class DecoyDuck : Duck() {
+class RubberDuck : Duck() {
 
     override fun display() {
-        println("decoy duck")
+        println("rubber duck")
     }
 
     override fun quack() {
-        // DO NOTHING
+        println("beep")
     }
 
     override fun fly() {

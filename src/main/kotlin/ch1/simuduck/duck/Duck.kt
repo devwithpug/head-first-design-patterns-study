@@ -1,4 +1,4 @@
-package ch1.simuduck
+package ch1.simuduck.duck
 
 open class Duck {
     open fun quack() {
