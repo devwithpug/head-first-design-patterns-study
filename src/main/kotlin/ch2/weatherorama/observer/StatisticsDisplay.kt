@@ -3,7 +3,9 @@ package ch2.weatherorama.observer
 import ch2.weatherorama.subject.WeatherData
 import ch2.weatherorama.subject.WeatherDto
 
-class StatisticsDisplay(weatherData: WeatherData) : DisplayElement, Observer<WeatherDto> {
+class StatisticsDisplay(
+    private val weatherData: WeatherData
+) : DisplayElement, Observer<WeatherDto> {
 
     private val weatherHistory: MutableList<WeatherDto> = mutableListOf()
 
@@ -28,5 +30,9 @@ class StatisticsDisplay(weatherData: WeatherData) : DisplayElement, Observer<Wea
     override fun update(value: WeatherDto) {
         weatherHistory.add(value)
         display()
+    }
+
+    override fun leave() {
+        weatherData.removeObserver(this)
     }
 }
