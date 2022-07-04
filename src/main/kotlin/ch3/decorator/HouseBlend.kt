@@ -1,11 +1,15 @@
 package ch3.decorator
 
-class HouseBlend : Beverage() {
+class HouseBlend : Beverage {
 
     private val cost: Double = 4.8
-    override val description: String = "house blend"
+    private val description: String = "house blend"
+
+    override fun description(): String {
+        return description
+    }
 
     override fun cost(): Double {
-        return super.cost() + cost
+        return cost
     }
 }
