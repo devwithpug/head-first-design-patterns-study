@@ -1,15 +1,11 @@
 package ch4.factory
 
-class OrderService {
+class OrderService(
+    private val pizzaFactory: PizzaFactory
+) {
 
     fun orderPizza(type: String): Pizza {
-        val pizza = when (type) {
-            "cheese" -> CheesePizza()
-            "greek" -> GreekPizza()
-            "pepperoni" -> PepperoniPizza()
-            else -> throw IllegalArgumentException()
-        }
-
+        val pizza = pizzaFactory.createPizza(type)
         pizza.prepare()
         pizza.bake()
         pizza.cut()
