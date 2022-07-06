@@ -2,11 +2,10 @@ package ch4.factory
 
 class SimplePizzaFactory : PizzaFactory {
 
-    override fun createPizza(type: String) =
-        when (type) {
-            "cheese" -> CheesePizza()
-            "greek" -> GreekPizza()
-            "pepperoni" -> PepperoniPizza()
-            else -> throw IllegalArgumentException()
+    override fun createPizza(menu: PizzaMenu) =
+        when (menu) {
+            PizzaMenu.CHEESE -> CheesePizza()
+            PizzaMenu.GREEK -> GreekPizza()
+            PizzaMenu.PEPPERONI -> PepperoniPizza()
         }
 }

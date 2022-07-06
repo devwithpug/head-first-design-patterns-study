@@ -1,5 +1,5 @@
 package ch4.factory
 
 interface PizzaFactory {
-    fun createPizza(type: String): Pizza
+    fun createPizza(menu: PizzaMenu): Pizza
 }
