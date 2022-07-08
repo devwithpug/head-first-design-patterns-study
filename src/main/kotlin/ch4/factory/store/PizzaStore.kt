@@ -1,6 +1,9 @@
-package ch4.factory
+package ch4.factory.store
 
-abstract class OrderService {
+import ch4.factory.pizza.Pizza
+import ch4.factory.pizza.PizzaMenu
+
+abstract class PizzaStore {
 
     fun orderPizza(menu: PizzaMenu): Pizza {
         val pizza = createPizza(menu)

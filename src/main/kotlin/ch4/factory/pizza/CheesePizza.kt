@@ -1,4 +1,4 @@
-package ch4.factory
+package ch4.factory.pizza
 
 class CheesePizza : Pizza {
 
