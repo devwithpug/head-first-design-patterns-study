@@ -1,8 +1,8 @@
 package ch4.factory
 
-class SimplePizzaFactory : PizzaFactory {
+class ItalyPizzaFactory : PizzaFactory {
     override fun createPizza(menu: PizzaMenu): Pizza {
-        println("create... simple pizza")
+        println("create... italy style pizza")
         return when (menu) {
             PizzaMenu.CHEESE -> CheesePizza()
             PizzaMenu.GREEK -> GreekPizza()
