@@ -1,20 +1,11 @@
 package ch4.factory.pizza
 
-class CheesePizza : Pizza {
+sealed class CheesePizza(style: String) : OrdinaryPizza(name = "$style style cheese pizza")
 
-    override fun prepare() {
-        println("prepare... cheese pizza")
-    }
+class OrdinaryCheesePizza : CheesePizza(style = "ordinary")
 
-    override fun bake() {
-        println("bake... cheese pizza")
-    }
+class ItalyStyleCheesePizza : CheesePizza(style = "italy")
 
-    override fun cut() {
-        println("cut... cheese pizza")
-    }
+class NewYorkStyleCheesePizza : CheesePizza(style = "new york")
 
-    override fun box() {
-        println("box... cheese pizza")
-    }
-}
+class ChicagoStyleCheesePizza : CheesePizza(style = "chicago")
