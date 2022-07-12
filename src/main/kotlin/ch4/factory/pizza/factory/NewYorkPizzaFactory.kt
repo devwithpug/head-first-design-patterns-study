@@ -1,6 +1,7 @@
 package ch4.factory.pizza.factory
 
 import ch4.factory.pizza.NewYorkStyleCheesePizza
+import ch4.factory.pizza.NewYorkStyleClamPizza
 import ch4.factory.pizza.NewYorkStyleGreekPizza
 import ch4.factory.pizza.NewYorkStylePepperoniPizza
 import ch4.factory.pizza.Pizza
@@ -12,6 +13,7 @@ class NewYorkPizzaFactory : PizzaFactory {
             "cheese" -> NewYorkStyleCheesePizza()
             "greek" -> NewYorkStyleGreekPizza()
             "pepperoni" -> NewYorkStylePepperoniPizza()
+            "clam" -> NewYorkStyleClamPizza()
             else -> throw IllegalArgumentException()
         }
     }

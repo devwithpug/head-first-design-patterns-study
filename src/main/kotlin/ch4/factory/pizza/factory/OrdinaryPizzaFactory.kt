@@ -1,6 +1,7 @@
 package ch4.factory.pizza.factory
 
 import ch4.factory.pizza.OrdinaryCheesePizza
+import ch4.factory.pizza.OrdinaryClamPizza
 import ch4.factory.pizza.OrdinaryGreekPizza
 import ch4.factory.pizza.OrdinaryPepperoniPizza
 import ch4.factory.pizza.Pizza
@@ -12,6 +13,7 @@ class OrdinaryPizzaFactory : PizzaFactory {
             "cheese" -> OrdinaryCheesePizza()
             "greek" -> OrdinaryGreekPizza()
             "pepperoni" -> OrdinaryPepperoniPizza()
+            "clam" -> OrdinaryClamPizza()
             else -> throw IllegalArgumentException()
         }
     }
