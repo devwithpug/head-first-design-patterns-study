@@ -1,37 +1,35 @@
 package ch4.factory.pizza
 
+import ch4.factory.ingredient.factory.ChicagoPizzaIngredientFactory
+import ch4.factory.ingredient.factory.ItalyPizzaIngredientFactory
+import ch4.factory.ingredient.factory.NewYorkPizzaIngredientFactory
+import ch4.factory.ingredient.factory.OrdinaryPizzaIngredientFactory
+import ch4.factory.ingredient.factory.PizzaIngredientFactory
+
 sealed class PepperoniPizza(
     style: String,
-    dough: String,
-    sauce: String,
-    toppings: List<String> = emptyList()
-) : OrdinaryPizza(
-    name = "$style style pepperoni pizza",
-    dough = dough,
-    sauce = sauce,
-    toppings = toppings
+    ingredientFactory: PizzaIngredientFactory
+) : Pizza(
+    name = "$style style cheese pizza",
+    ingredientFactory = ingredientFactory
 )
 
 class OrdinaryPepperoniPizza : PepperoniPizza(
     style = "ordinary",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = OrdinaryPizzaIngredientFactory()
 )
 
 class ItalyStylePepperoniPizza : PepperoniPizza(
     style = "italy",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = ItalyPizzaIngredientFactory()
 )
 
 class NewYorkStylePepperoniPizza : PepperoniPizza(
     style = "new york",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = NewYorkPizzaIngredientFactory()
 )
 
 class ChicagoStylePepperoniPizza : PepperoniPizza(
     style = "chicago",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = ChicagoPizzaIngredientFactory()
 )

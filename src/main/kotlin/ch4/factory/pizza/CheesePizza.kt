@@ -1,29 +1,27 @@
 package ch4.factory.pizza
 
+import ch4.factory.ingredient.factory.ChicagoPizzaIngredientFactory
+import ch4.factory.ingredient.factory.ItalyPizzaIngredientFactory
+import ch4.factory.ingredient.factory.NewYorkPizzaIngredientFactory
+import ch4.factory.ingredient.factory.OrdinaryPizzaIngredientFactory
+import ch4.factory.ingredient.factory.PizzaIngredientFactory
+
 sealed class CheesePizza(
     style: String,
-    dough: String,
-    sauce: String,
-    toppings: List<String> = emptyList()
-) : OrdinaryPizza(
+    ingredientFactory: PizzaIngredientFactory
+) : Pizza(
     name = "$style style cheese pizza",
-    dough = dough,
-    sauce = sauce,
-    toppings = toppings
+    ingredientFactory = ingredientFactory
 )
 
 class OrdinaryCheesePizza : CheesePizza(
     style = "ordinary",
-    dough = "thin crust dough",
-    sauce = "marinara sauce",
-    toppings = listOf("reggiano cheese")
+    ingredientFactory = OrdinaryPizzaIngredientFactory()
 )
 
 class ItalyStyleCheesePizza : CheesePizza(
     style = "italy",
-    dough = "a very thick crust dough",
-    sauce = "plum tomato sauce",
-    toppings = listOf("mozzarella cheese")
+    ingredientFactory = ItalyPizzaIngredientFactory()
 ) {
     override fun cut() {
         println("cut $name into squares...")
@@ -32,12 +30,10 @@ class ItalyStyleCheesePizza : CheesePizza(
 
 class NewYorkStyleCheesePizza : CheesePizza(
     style = "new york",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = NewYorkPizzaIngredientFactory()
 )
 
 class ChicagoStyleCheesePizza : CheesePizza(
     style = "chicago",
-    dough = "foo dough",
-    sauce = "bar sauce"
+    ingredientFactory = ChicagoPizzaIngredientFactory()
 )
