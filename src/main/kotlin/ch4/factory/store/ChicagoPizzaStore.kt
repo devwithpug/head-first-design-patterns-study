@@ -1,6 +1,6 @@
 package ch4.factory.store
 
-import ch4.factory.factory.ChicagoPizzaFactory
+import ch4.factory.pizza.factory.ChicagoPizzaFactory
 import ch4.factory.pizza.Pizza
 
 class ChicagoPizzaStore : PizzaStore() {

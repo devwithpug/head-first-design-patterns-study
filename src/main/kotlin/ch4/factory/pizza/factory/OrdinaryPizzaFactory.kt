@@ -1,4 +1,4 @@
-package ch4.factory.factory
+package ch4.factory.pizza.factory
 
 import ch4.factory.pizza.OrdinaryCheesePizza
 import ch4.factory.pizza.OrdinaryGreekPizza
