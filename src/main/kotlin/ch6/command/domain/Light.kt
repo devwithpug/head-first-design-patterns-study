@@ -1,10 +1,17 @@
 package ch6.command.domain
 
-class Light {
+sealed class Light(private val location: String) {
     fun on() {
-        println("light ON")
+        println("$location light ON")
     }
+
     fun off() {
-        println("light OFF")
+        println("$location light OFF")
     }
 }
+
+class CeilingLight : Light("ceiling")
+
+class GardenLight : Light("garden")
+
+class OutdoorLight : Light("outdoor")
