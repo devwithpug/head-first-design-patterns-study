@@ -1,4 +1,4 @@
-package ch6.command
+package ch6.command.domain
 
 class Stereo {
     fun on() {}
