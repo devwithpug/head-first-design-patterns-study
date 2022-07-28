@@ -6,5 +6,5 @@ class Stereo {
     fun setCd() {}
     fun setDvd() {}
     fun setRadio() {}
-    fun setVolume() {}
+    fun setVolume(volume: Int) {}
 }
