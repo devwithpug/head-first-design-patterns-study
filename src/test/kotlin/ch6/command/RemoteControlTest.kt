@@ -4,6 +4,7 @@ import ch6.command.domain.CeilingLight
 import ch6.command.domain.GarageDoor
 import ch6.command.domain.GardenLight
 import ch6.command.domain.OutdoorLight
+import ch6.command.domain.Sprinkler
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -34,5 +35,18 @@ internal class RemoteControlTest {
         remote.offButtonWasPushed(3)
 
         assertThrows<UnsupportedOperationException> { remote.onButtonWasPushed(5) }
+    }
+
+    @Test
+    fun `undoCommand 테스트`() {
+        val remote = RemoteControl()
+
+        val sprinkler = Sprinkler()
+
+        remote.setCommand(slot = 0, on = { sprinkler.waterOn() }, off = { sprinkler.waterOff() })
+
+        remote.onButtonWasPushed(0)
+        remote.offButtonWasPushed(0)
+        remote.undoButtonWasPushed()
     }
 }

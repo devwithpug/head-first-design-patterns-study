@@ -1,6 +1,11 @@
 package ch6.command.domain
 
 class Sprinkler {
-    fun waterOn() {}
-    fun waterOff() {}
+    fun waterOn() {
+        println("Sprinkler water ON")
+    }
+
+    fun waterOff() {
+        println("Sprinkler water OFF")
+    }
 }
