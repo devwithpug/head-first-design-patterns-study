@@ -1,24 +1,24 @@
 package ch6.command
 
-import ch6.command.command.NoCommand
-
 class RemoteControl {
 
-    private val onCommands = Array<Command>(size = REMOTE_CONTROL_SLOT_SIZE) { NoCommand() }
-    private val offCommands = Array<Command>(size = REMOTE_CONTROL_SLOT_SIZE) { NoCommand() }
+    private val onCommands = Array(size = REMOTE_CONTROL_SLOT_SIZE) { { noCommand() } }
+    private val offCommands = Array(size = REMOTE_CONTROL_SLOT_SIZE) { { noCommand() } }
 
-    fun setCommand(slot: Int, on: Command, off: Command) {
+    fun setCommand(slot: Int, on: () -> Unit, off: () -> Unit) {
         onCommands[slot] = on
         offCommands[slot] = off
     }
 
     fun onButtonWasPushed(slot: Int) {
-        onCommands[slot].execute()
+        onCommands[slot]()
     }
 
     fun offButtonWasPushed(slot: Int) {
-        offCommands[slot].execute()
+        offCommands[slot]()
     }
+
+    private fun noCommand(): Unit = throw UnsupportedOperationException("NO COMMAND")
 
     companion object {
         private const val REMOTE_CONTROL_SLOT_SIZE = 7
