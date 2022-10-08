@@ -19,4 +19,17 @@ internal class AdaptorTest {
         assertThat(enumerationIterator).isInstanceOf(Iterator::class.java)
         assertThrows<UnsupportedOperationException> { enumerationIterator.remove() }
     }
+
+    @Test
+    fun `Iterator to Enumeration`() {
+        // given
+        val mutableList = mutableListOf(1, 2, 3, 4, 5)
+        val iterator = mutableList.iterator()
+
+        // when
+        val iteratorEnumeration = IteratorEnumeration(iterator)
+
+        // then
+        assertThat(iteratorEnumeration).isInstanceOf(Enumeration::class.java)
+    }
 }
