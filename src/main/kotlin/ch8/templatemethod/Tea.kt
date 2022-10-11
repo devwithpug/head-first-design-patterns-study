@@ -9,4 +9,8 @@ class Tea : CaffeineBeverage() {
     override fun addCondiments() {
         println("adding lemon...")
     }
+
+    override fun customerWantsCondiments(): Boolean {
+        return (0..9).random() % 2 == 0
+    }
 }
