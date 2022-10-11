@@ -2,13 +2,22 @@ package ch8.templatemethod
 
 abstract class CaffeineBeverage {
 
-    abstract fun prepareRecipe()
+    fun prepareRecipe() {
+        boilWater()
+        brew()
+        pourInCup()
+        addCondiments()
+    }
 
-    fun boilWater() {
+    abstract fun brew()
+
+    abstract fun addCondiments()
+
+    private fun boilWater() {
         println("boiling water...")
     }
 
-    fun pourInCup() {
+    private fun pourInCup() {
         println("pouring in a cup...")
     }
 }
