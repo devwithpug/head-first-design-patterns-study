@@ -6,12 +6,16 @@ abstract class CaffeineBeverage {
         boilWater()
         brew()
         pourInCup()
-        addCondiments()
+        if (customerWantsCondiments()) {
+            addCondiments()
+        }
     }
 
     abstract fun brew()
 
     abstract fun addCondiments()
+
+    open fun customerWantsCondiments() = true
 
     private fun boilWater() {
         println("boiling water...")
