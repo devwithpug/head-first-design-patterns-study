@@ -1,16 +1,12 @@
 package ch8.templatemethod
 
-class Tea {
+class Tea : CaffeineBeverage() {
 
-    fun prepareRecipe() {
+    override fun prepareRecipe() {
         boilWater()
         steepTeaBag()
         pourInCup()
         addLemon()
-    }
-
-    fun boilWater() {
-        println("boiling water...")
     }
 
     fun steepTeaBag() {
@@ -19,9 +15,5 @@ class Tea {
 
     fun addLemon() {
         println("adding lemon...")
-    }
-
-    fun pourInCup() {
-        println("pouring in a cup...")
     }
 }
