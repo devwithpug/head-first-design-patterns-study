@@ -32,7 +32,7 @@ class DinerMenu {
         menuItems[numberOfItems++] = MenuItem(name, description, vegetarian, price)
     }
 
-    fun getMenuItems() = menuItems.copyOfRange(0, numberOfItems)
+    fun iterator() = DinerMenuIterator(menuItems.copyOfRange(0, numberOfItems))
 
     companion object {
         private const val MAX_ITEMS = 6

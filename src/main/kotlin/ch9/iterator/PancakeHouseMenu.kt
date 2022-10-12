@@ -28,5 +28,5 @@ class PancakeHouseMenu {
         menuItems.add(MenuItem(name, description, vegetarian, price))
     }
 
-    fun getMenuItem() = menuItems
+    fun iterator() = PancakeHouseMenuIterator(menuItems)
 }

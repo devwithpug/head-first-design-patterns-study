@@ -10,15 +10,22 @@ internal class IteratorTest {
         val pancakeHouseMenu = PancakeHouseMenu()
         val dinerMenu = DinerMenu()
 
-        val pancakeHouseMenuItems = pancakeHouseMenu.getMenuItem()
-        val dinerMenuItems = dinerMenu.getMenuItems()
+        val pancakeHouseMenuIterator = pancakeHouseMenu.iterator()
+        val dinerMenuIterator = dinerMenu.iterator()
 
         // when & then
-        printMenu(pancakeHouseMenuItems, dinerMenuItems)
+        printMenus(pancakeHouseMenuIterator, dinerMenuIterator)
     }
 
-    private fun printMenu(pancakeHouseMenu: MutableList<MenuItem>, dinerMenu: Array<MenuItem>) {
-        pancakeHouseMenu.forEach { println("${it.name} ${it.description} ${it.price} ${it.vegetarian}") }
-        dinerMenu.forEach { println("${it.name} ${it.description} ${it.price} ${it.vegetarian}") }
+    private fun printMenus(vararg iterators: Iterator<MenuItem>) {
+        iterators.forEach { iterator ->
+            while (iterator.hasNext()) {
+                printMenu(iterator.next())
+            }
+        }
+    }
+
+    private fun printMenu(menuItem: MenuItem) {
+        println("${menuItem.name} ${menuItem.description} ${menuItem.price} ${menuItem.vegetarian}")
     }
 }
