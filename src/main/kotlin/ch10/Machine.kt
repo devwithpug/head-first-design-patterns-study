@@ -38,7 +38,9 @@ class Machine(
 
     fun turnCrank() {
         state.turnCrank()
-        state.dispense()
+        if (state is SoldState) {
+            state.dispense()
+        }
     }
 
     fun releaseBall() {
