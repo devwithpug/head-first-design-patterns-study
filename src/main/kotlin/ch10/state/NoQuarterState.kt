@@ -2,23 +2,21 @@ package ch10.state
 
 import ch10.Machine
 
-class NoQuarterState(
-    private val machine: Machine
-) : State {
-    override fun insertQuarter() {
+class NoQuarterState : State {
+    override fun insertQuarter(machine: Machine) {
         println("putting in a quarter coin...")
         machine.setState(State.StateType.HAS_QUARTER)
     }
 
-    override fun ejectQuarter() {
+    override fun ejectQuarter(machine: Machine) {
         println("please put in a quarter coin")
     }
 
-    override fun turnCrank() {
+    override fun turnCrank(machine: Machine) {
         println("please put in a quarter coin")
     }
 
-    override fun dispense() {
+    override fun dispense(machine: Machine) {
         println("please put in a quarter coin")
     }
 

@@ -2,22 +2,20 @@ package ch10.state
 
 import ch10.Machine
 
-class SoldOutState(
-    private val machine: Machine
-) : State {
-    override fun insertQuarter() {
+class SoldOutState : State {
+    override fun insertQuarter(machine: Machine) {
         println("sold out")
     }
 
-    override fun ejectQuarter() {
+    override fun ejectQuarter(machine: Machine) {
         println("there are no quarter coin in machine")
     }
 
-    override fun turnCrank() {
+    override fun turnCrank(machine: Machine) {
         println("sold out")
     }
 
-    override fun dispense() {
+    override fun dispense(machine: Machine) {
         println("sold out")
     }
     override fun getStateType() = State.StateType.SOLD_OUT

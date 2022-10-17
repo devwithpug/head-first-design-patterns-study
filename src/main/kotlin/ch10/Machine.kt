@@ -15,11 +15,6 @@ class Machine(
 ) {
     private var state: State
 
-    private val soldOutState = SoldOutState(this)
-    private val noQuarterState = NoQuarterState(this)
-    private val hasQuarterState = HasQuarterState(this)
-    private val soldState = SoldState(this)
-
     init {
         state = if (count > 0) {
             noQuarterState
@@ -29,17 +24,17 @@ class Machine(
     }
 
     fun insertQuarter() {
-        state.insertQuarter()
+        state.insertQuarter(this)
     }
 
     fun ejectQuarter() {
-        state.ejectQuarter()
+        state.ejectQuarter(this)
     }
 
     fun turnCrank() {
-        state.turnCrank()
+        state.turnCrank(this)
         if (state is SoldState) {
-            state.dispense()
+            state.dispense(this)
         }
     }
 
@@ -67,5 +62,12 @@ class Machine(
 
     override fun toString(): String {
         return "[Machine] count = $count, state = $state"
+    }
+
+    companion object {
+        private val soldOutState = SoldOutState()
+        private val noQuarterState = NoQuarterState()
+        private val hasQuarterState = HasQuarterState()
+        private val soldState = SoldState()
     }
 }
