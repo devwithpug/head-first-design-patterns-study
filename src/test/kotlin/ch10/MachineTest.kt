@@ -1,5 +1,6 @@
 package ch10
 
+import ch10.state.State
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -15,8 +16,8 @@ internal class MachineTest {
         machine.turnCrank()
 
         // then
-        assertThat(machine.count).isEqualTo(DEFAULT_NUMBER_OF_BALLS - 1)
-        assertThat(machine.state).isEqualTo(State.NO_QUARTER)
+        assertThat(machine.getCount()).isEqualTo(DEFAULT_NUMBER_OF_BALLS - 1)
+        assertThat(machine.getState()).isEqualTo(State.StateType.NO_QUARTER)
     }
 
     @Test
@@ -30,8 +31,8 @@ internal class MachineTest {
         machine.turnCrank()
 
         // then
-        assertThat(machine.count).isEqualTo(DEFAULT_NUMBER_OF_BALLS)
-        assertThat(machine.state).isEqualTo(State.NO_QUARTER)
+        assertThat(machine.getCount()).isEqualTo(DEFAULT_NUMBER_OF_BALLS)
+        assertThat(machine.getState()).isEqualTo(State.StateType.NO_QUARTER)
     }
 
     @Test
@@ -45,8 +46,8 @@ internal class MachineTest {
         machine.ejectQuarter()
 
         // then
-        assertThat(machine.count).isEqualTo(DEFAULT_NUMBER_OF_BALLS - 1)
-        assertThat(machine.state).isEqualTo(State.NO_QUARTER)
+        assertThat(machine.getCount()).isEqualTo(DEFAULT_NUMBER_OF_BALLS - 1)
+        assertThat(machine.getState()).isEqualTo(State.StateType.NO_QUARTER)
     }
 
     @Test
@@ -58,8 +59,8 @@ internal class MachineTest {
         machine.insertQuarter()
 
         // then
-        assertThat(machine.count).isEqualTo(DEFAULT_NUMBER_OF_BALLS)
-        assertThat(machine.state).isEqualTo(State.HAS_QUARTER)
+        assertThat(machine.getCount()).isEqualTo(DEFAULT_NUMBER_OF_BALLS)
+        assertThat(machine.getState()).isEqualTo(State.StateType.HAS_QUARTER)
     }
 
     @Test
@@ -74,8 +75,8 @@ internal class MachineTest {
         }
 
         // then
-        assertThat(machine.count).isEqualTo(0)
-        assertThat(machine.state).isEqualTo(State.SOLD_OUT)
+        assertThat(machine.getCount()).isEqualTo(0)
+        assertThat(machine.getState()).isEqualTo(State.StateType.SOLD_OUT)
     }
 
     companion object {

@@ -6,6 +6,7 @@ interface State {
     fun ejectQuarter()
     fun turnCrank()
     fun dispense()
+    fun getStateType(): StateType
 
     enum class StateType {
         SOLD_OUT, NO_QUARTER, HAS_QUARTER, SOLD

@@ -1,73 +1,66 @@
 package ch10
 
-import ch10.State.HAS_QUARTER
-import ch10.State.NO_QUARTER
-import ch10.State.SOLD
-import ch10.State.SOLD_OUT
+import ch10.state.HasQuarterState
+import ch10.state.NoQuarterState
+import ch10.state.SoldOutState
+import ch10.state.SoldState
+import ch10.state.State
+import ch10.state.State.StateType.HAS_QUARTER
+import ch10.state.State.StateType.NO_QUARTER
+import ch10.state.State.StateType.SOLD
+import ch10.state.State.StateType.SOLD_OUT
 
 class Machine(
-    var count: Int
+    private var count: Int
 ) {
-    var state = SOLD_OUT
+    private var state: State
+
+    private val soldOutState = SoldOutState(this)
+    private val noQuarterState = NoQuarterState(this)
+    private val hasQuarterState = HasQuarterState(this)
+    private val soldState = SoldState(this)
 
     init {
-        if (count > 0) {
-            state = NO_QUARTER
+        state = if (count > 0) {
+            noQuarterState
+        } else {
+            soldOutState
         }
     }
 
     fun insertQuarter() {
-        when (state) {
-            HAS_QUARTER -> println("please put in a one quarter coin only")
-            SOLD_OUT -> println("sold out")
-            SOLD -> println("dispensing ball...")
-            NO_QUARTER -> {
-                state = HAS_QUARTER
-                println("putting in a quarter coin...")
-            }
-        }
+        state.insertQuarter()
     }
 
     fun ejectQuarter() {
-        when (state) {
-            SOLD_OUT -> println("there are no quarter coin in machine")
-            SOLD -> println("a quarter coin ejected already")
-            NO_QUARTER -> println("please put in a quarter coin")
-            HAS_QUARTER -> {
-                println("ejecting quarter coin...")
-                state = NO_QUARTER
-            }
-        }
+        state.ejectQuarter()
     }
 
     fun turnCrank() {
-        when (state) {
-            SOLD_OUT -> println("sold out")
-            SOLD -> println("please turn the cranks once")
-            NO_QUARTER -> println("please put in a quarter coin")
-            HAS_QUARTER -> {
-                println("you turned the crank")
-                state = SOLD
-                dispense()
-            }
+        state.turnCrank()
+        state.dispense()
+    }
+
+    fun releaseBall() {
+        println("dispensing ball...")
+        if (count > 0) {
+            count -= 1
         }
     }
 
-    private fun dispense() {
-        when (state) {
-            SOLD_OUT -> println("sold out")
-            NO_QUARTER -> println("please put in a quarter coin")
-            HAS_QUARTER -> throw IllegalStateException()
-            SOLD -> {
-                println("dispensing ball...")
-                state = if (--count == 0) {
-                    println("sold out")
-                    SOLD_OUT
-                } else {
-                    NO_QUARTER
-                }
-            }
+    fun getCount() = count
+
+    fun setState(stateType: State.StateType) {
+        state = when (stateType) {
+            SOLD_OUT -> soldOutState
+            NO_QUARTER -> noQuarterState
+            HAS_QUARTER -> hasQuarterState
+            SOLD -> soldState
         }
+    }
+
+    fun getState(): State.StateType {
+        return state.getStateType()
     }
 
     override fun toString(): String {
